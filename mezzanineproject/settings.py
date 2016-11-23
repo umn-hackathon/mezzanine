@@ -118,7 +118,7 @@ LANGUAGES = (
 # A boolean that turns on/off debug mode. When set to ``True``, stack traces
 # are displayed for error pages. Should always be set to ``False`` in
 # production. Best set to ``True`` in local_settings.py
-DEBUG = False
+DEBUG = True
 
 # Whether a user's session cookie expires when the Web browser is closed.
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
@@ -145,14 +145,17 @@ FILE_UPLOAD_PERMISSIONS = 0o644
 # DATABASES #
 #############
 
+SECRET_KEY = "1c+ea#ary%m!t+^+#%1wl^un0s7m*k&xj^mb%mn#3al@^#8nc&"
+ALLOWED_HOSTS = ['127.0.0.1',]
+
 DATABASES = {
     "default": {
-        # Add "postgresql_psycopg2", "mysql", "sqlite3" or "oracle".
-        "ENGINE": "django.db.backends.",
+        # Ends with "postgresql_psycopg2", "mysql", "sqlite3" or "oracle".
+        "ENGINE": "django.db.backends.mysql",
         # DB name or path to database file if using sqlite3.
-        "NAME": "",
+        "NAME": "mezzanine",
         # Not used with sqlite3.
-        "USER": "",
+        "USER": "root",
         # Not used with sqlite3.
         "PASSWORD": "",
         # Set to empty string for localhost. Not used with sqlite3.
@@ -351,3 +354,8 @@ ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_EMAIL_VERIFICATION = "none"
 SOCIALACCOUNT_QUERY_EMAIL = True
 LOGIN_REDIRECT_URL = "/"
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+)

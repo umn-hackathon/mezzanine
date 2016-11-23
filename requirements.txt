@@ -1,1 +1,4 @@
 Mezzanine==4.2.2
+django-crispy-forms
+mysqlclient
+django-allauth
