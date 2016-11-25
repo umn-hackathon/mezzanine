@@ -376,7 +376,7 @@ ANYMAIL = {
     "MAILGUN_API_KEY": "key-a49737b5cb01f248a9504add70de1cf3",
     "MAILGUN_SENDER_DOMAIN": 'alviandk.com',  # your Mailgun domain, if needed
 }
-EMAIL_BACKEND = "anymail.backends.mailgun.MailgunBackend"  # or sendgrid.SendGridBackend, or...
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"  # or sendgrid.SendGridBackend, or...
 DEFAULT_FROM_EMAIL = "admin@be-py.com"  # if you don't already have this in settings
 
 ACCOUNT_EMAIL_REQUIRED = 'True'
