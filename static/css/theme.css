@@ -911,7 +911,7 @@ nav .btn,
   height: 55px;
 }
 .logo {
-  max-height: 60%;
+  max-height: 80%;
 }
 .logo-light {
   display: none;
@@ -4994,9 +4994,7 @@ section + .portfolio-pullup {
 footer.bg-dark a {
   color: #fff;
 }
-.footer-1 .logo {
-  max-height: 30px;
-}
+
 .footer-1 .sub {
   opacity: .5;
 }
