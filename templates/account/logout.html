@@ -5,17 +5,45 @@
 {% block head_title %}{% trans "Sign Out" %}{% endblock %}
 
 {% block main %}
-<h1>{% trans "Sign Out" %}</h1>
 
-<p>{% trans 'Are you sure you want to sign out?' %}</p>
+<section class="fullscreen">
+    <div class="container v-align-transform">
+        <div class="row">
+            <div class="col-sm-4 col-sm-offset-4">
+                <div class="text-center">
+                    
+                    <h1>{% trans "Sign Out" %}</h1>
 
-<form method="post" action="{% url 'account_logout' %}">
-  {% csrf_token %}
-  {% if redirect_field_value %}
-  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
-  {% endif %}
-  <button class="btn btn-danger" type="submit">{% trans 'Sign Out' %}</button>
-</form>
+					<p>{% trans 'Are you sure you want to sign out?' %}</p>
+
+					<form class="text-left" method="post" action="{% url 'account_logout' %}">
+					  {% csrf_token %}
+					  {% if redirect_field_value %}
+					  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+					  {% endif %}
+					  <button type="submit">{% trans 'Sign Out' %}</button>
+					</form>
+                </div>
+            </div>
+        </div>
+        <!--end of row-->
+        <div class="embelish-icons">
+            <i class="ti-help-alt"></i>
+            <i class="ti-cross"></i>
+            <i class="ti-support"></i>
+            <i class="ti-announcement"></i>
+            <i class="ti-signal"></i>
+            <i class="ti-pulse"></i>
+            <i class="ti-marker"></i>
+            <i class="ti-pulse"></i>
+            <i class="ti-alert"></i>
+            <i class="ti-help-alt"></i>
+            <i class="ti-alert"></i>
+            <i class="ti-pulse"></i>
+        </div>
+    </div>
+    <!--end of container-->
+</section>
 
 
 {% endblock %}
