@@ -255,7 +255,7 @@ INSTALLED_APPS = (
     "mezzanine.forms",
     "mezzanine.galleries",
     "mezzanine.twitter",
-    # "mezzanine.accounts",
+    "mezzanine.accounts",
     # "mezzanine.mobile",
     # The Django sites framework is required
     'allauth',
@@ -264,6 +264,7 @@ INSTALLED_APPS = (
     # Login via Google
     'allauth.socialaccount.providers.google',
     'crispy_forms',
+    'anymail'
 )
 
 # List of middleware classes to use. Order is important; in the request phase,
@@ -359,3 +360,25 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 )
+
+COMMENTS_ACCOUNT_REQUIRED = True
+ACCOUNTS_PROFILE_VIEWS_ENABLED = True
+RATINGS_ACCOUNT_REQUIRED = True
+COMMENTS_USE_RATINGS = True
+RATINGS_ACCOUNT_REQUIRED = True
+COMMENTS_REMOVED_VISIBLE = True
+COMMENTS_UNAPPROVED_VISIBLE = False
+RATINGS_RANGE = [-1, 1]
+
+
+ANYMAIL = {
+    # (exact settings here depend on your ESP...)
+    "MAILGUN_API_KEY": "key-a49737b5cb01f248a9504add70de1cf3",
+    "MAILGUN_SENDER_DOMAIN": 'alviandk.com',  # your Mailgun domain, if needed
+}
+EMAIL_BACKEND = "anymail.backends.mailgun.MailgunBackend"  # or sendgrid.SendGridBackend, or...
+DEFAULT_FROM_EMAIL = "admin@be-py.com"  # if you don't already have this in settings
+
+ACCOUNT_EMAIL_REQUIRED = 'True'
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+ACCOUNT_EMAIL_SUBJECT_PREFIX = 'Bepy'

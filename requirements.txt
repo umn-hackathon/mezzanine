@@ -2,3 +2,4 @@ Mezzanine==4.2.2
 django-crispy-forms
 mysqlclient
 django-allauth
+django-anymail==0.6.1
