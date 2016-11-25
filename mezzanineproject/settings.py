@@ -380,6 +380,8 @@ EMAIL_BACKEND = "anymail.backends.mailgun.MailgunBackend"  # or sendgrid.SendGri
 DEFAULT_FROM_EMAIL = "admin@be-py.com"  # if you don't already have this in settings
 
 ACCOUNT_EMAIL_REQUIRED = 'True'
+
+#ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 ACCOUNT_EMAIL_SUBJECT_PREFIX = 'Bepy'
 BLOG_USE_FEATURED_IMAGE = True
