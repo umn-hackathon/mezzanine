@@ -30,19 +30,22 @@ def censored_check(request):
     index = 0
 
     for comment_split in comment_splits:
-        print ('comment_split', comment_split)
-        print('censored_words', censored_words)
-        if comment_split in censored_words:
+        #print ('comment_split', comment_split)
+        #print('censored_words', censored_words)
+        for char in ' ?.!/;:,':
+            comment_split = comment_split.replace(char,'')
+
+        if comment_split.lower() in censored_words:
             comment_splits[index] = comment_splits[index].replace(comment_splits[index], '**censored**')
         index += 1
-    print('comment_splits', comment_splits)
+    #print('comment_splits', comment_splits)
     comment_join = ' '.join(comment_splits)
     if comment.comment != comment_join:
         # notify user
         pass
 
     comment.comment = comment_join
-    print('comment_join', comment_join)
+    #print('comment_join', comment_join)
     comment.save()
 
     return JSONResponse("Ok", status=200)
