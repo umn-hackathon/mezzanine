@@ -267,6 +267,7 @@ INSTALLED_APPS = (
     'anymail',
     'comment_filter',
     'notifications',
+    'rest_framework',
 )
 
 # List of middleware classes to use. Order is important; in the request phase,
@@ -387,3 +388,4 @@ ACCOUNT_EMAIL_REQUIRED = 'True'
 ACCOUNT_EMAIL_VERIFICATION = 'none'
 ACCOUNT_EMAIL_SUBJECT_PREFIX = 'Bepy'
 BLOG_USE_FEATURED_IMAGE = True
+DOMAIN_URL = 'http://127.0.0.1:8000'

@@ -20,6 +20,7 @@ urlpatterns = i18n_patterns(
     url("^admin/", include(admin.site.urls)),
     url(r'^accounts/', include('allauth.urls')),
     url('^notifications/', include('notifications.urls', namespace='notifications')),
+    url('^comment_filter/', include('comment_filter.urls', namespace='comment_filter')),
 
 )
 
