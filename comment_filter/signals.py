@@ -19,17 +19,18 @@ def notif_comment(sender, instance, created, **kwargs):
         fail_silently=False,
     )
 
-    requests.post(settings.DOMAIN_URL + '/comment_filter/censored_check/',
-                  data={'comment_id': instance.comment_ptr_id,})
-
-    user = User.objects.get(id=instance.by_author)
-    if instance.replied_to_id:
-        notify.send(instance, recipient=user, verb='you reached level 10')
+    try:
+        user = User.objects.get(id=instance.replied_to.user_id)
+        if instance.replied_to_id:
+            notify.send(instance, recipient=user, verb='you reached level 10')
+    except:
+        print('dfsf')
 
 
 def filter_comment(sender, instance, created, **kwargs):
+
     requests.post(settings.DOMAIN_URL + '/comment_filter/censored_check/',
-                  data={'comment_id': instance.comment_ptr_id,})
+                data={'comment_id': instance.comment_ptr_id,})
 
 post_save.connect(notif_comment, sender=ThreadedComment)
-post_save.connect(notif_comment, sender=ThreadedComment)
+post_save.connect(filter_comment, sender=ThreadedComment)
