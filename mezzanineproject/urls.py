@@ -8,7 +8,6 @@ from django.views.i18n import set_language
 from mezzanine.core.views import direct_to_template
 from mezzanine.conf import settings
 
-
 admin.autodiscover()
 
 # Add the urlpatterns for any custom Django applications here.
@@ -20,6 +19,8 @@ urlpatterns = i18n_patterns(
     # admin interface, which would be marginally more secure.
     url("^admin/", include(admin.site.urls)),
     url(r'^accounts/', include('allauth.urls')),
+    url('^notifications/', include('notifications.urls', namespace='notifications')),
+
 )
 
 if settings.USE_MODELTRANSLATION:

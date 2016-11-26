@@ -3,3 +3,4 @@ django-crispy-forms
 mysqlclient
 django-allauth
 django-anymail==0.6.1
+django-notifications-hq==1.2

@@ -265,7 +265,8 @@ INSTALLED_APPS = (
     'allauth.socialaccount.providers.google',
     'crispy_forms',
     'anymail',
-    'comment_filter'
+    'comment_filter',
+    'notifications',
 )
 
 # List of middleware classes to use. Order is important; in the request phase,
@@ -383,6 +384,6 @@ DEFAULT_FROM_EMAIL = "admin@be-py.com"  # if you don't already have this in sett
 ACCOUNT_EMAIL_REQUIRED = 'True'
 
 #ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
-ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+ACCOUNT_EMAIL_VERIFICATION = 'none'
 ACCOUNT_EMAIL_SUBJECT_PREFIX = 'Bepy'
 BLOG_USE_FEATURED_IMAGE = True
