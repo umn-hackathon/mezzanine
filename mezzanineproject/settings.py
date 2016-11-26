@@ -264,7 +264,8 @@ INSTALLED_APPS = (
     # Login via Google
     'allauth.socialaccount.providers.google',
     'crispy_forms',
-    'anymail'
+    'anymail',
+    'comment_filter'
 )
 
 # List of middleware classes to use. Order is important; in the request phase,
