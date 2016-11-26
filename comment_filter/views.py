@@ -1,10 +1,12 @@
+from django.contrib.auth.models import User
 from django.http import HttpResponse
 
+from django_comments.models import Comment
 from rest_framework.renderers import JSONRenderer
 from rest_framework.decorators import api_view
-from django_comments.models import Comment
 
-from comment_filter.models import CensoredWord
+
+from comment_filter.models import CensoredWord, ReportedComment
 
 
 
@@ -49,3 +51,24 @@ def censored_check(request):
     comment.save()
 
     return JSONResponse("Ok", status=200)
+
+
+@api_view(['POST'])
+def report_comment(request):
+    comment_id = request.POST.get('comment_id')
+    user_id = request.POST.get('user_id')
+    comment = Comment.objects.get(id=comment_id)
+    user = User.objects.get(id=user_id)
+    reported, created = ReportedComment.objects.get_or_create(comment=comment, reporter=user)
+    if created:
+        response = 'You are succesfully report this comment'
+    else:
+        response = 'You have reported this comment before'
+
+    reported_count = ReportedComment.objects.filter(comment=comment).count()
+    if reported_count > 10:
+        comment.is_removed = True
+        comment.save()
+
+    
+    return JSONResponse({'response': response}, status=200)
