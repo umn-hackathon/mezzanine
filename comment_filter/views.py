@@ -67,7 +67,7 @@ def report_comment(request):
         response = 'You have reported this comment before'
 
     reported_count = ReportedComment.objects.filter(comment=comment).count()
-    if reported_count > 10:
+    if reported_count > 2:
         comment.is_removed = True
         comment.save()
 
