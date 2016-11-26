@@ -267,6 +267,7 @@ INSTALLED_APPS = (
     'anymail',
     'comment_filter',
     'notifications',
+    'rest_framework',
 )
 
 # List of middleware classes to use. Order is important; in the request phase,
@@ -365,7 +366,6 @@ STATICFILES_FINDERS = (
 
 COMMENTS_ACCOUNT_REQUIRED = True
 ACCOUNTS_PROFILE_VIEWS_ENABLED = True
-RATINGS_ACCOUNT_REQUIRED = True
 COMMENTS_USE_RATINGS = True
 RATINGS_ACCOUNT_REQUIRED = True
 COMMENTS_REMOVED_VISIBLE = True
@@ -387,3 +387,4 @@ ACCOUNT_EMAIL_REQUIRED = 'True'
 ACCOUNT_EMAIL_VERIFICATION = 'none'
 ACCOUNT_EMAIL_SUBJECT_PREFIX = 'Bepy'
 BLOG_USE_FEATURED_IMAGE = True
+DOMAIN_URL = 'http://127.0.0.1:8000'

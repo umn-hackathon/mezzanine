@@ -1,3 +1,5 @@
 from django.contrib import admin
 
-# Register your models here.
+from comment_filter.models import CensoredWord
+
+admin.site.register(CensoredWord)
