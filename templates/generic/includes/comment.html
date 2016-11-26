@@ -58,7 +58,7 @@
     {% else %}
         <p>
             {% if comment.is_removed %}
-                <span class="glyphicon glyphicon-remove-circle"></span> {% trans "Comment is removed, because is reported as an offensive comment by some users" %}<br>
+                <span class="glyphicon glyphicon-remove-circle"></span> <b>{% trans "Comment is removed, because is reported as an offensive comment by some users" %}</b><br>
             {% else %}
                 <!--span class="glyphicon glyphicon-warning-sign"></span> {% trans "Comment awaiting approval" %}-->
             {% endif %}
