@@ -22,7 +22,7 @@ def notif_comment(sender, instance, created, **kwargs):
     try:
         user = User.objects.get(id=instance.replied_to.user_id)
         if instance.replied_to_id:
-            notify.send(instance, recipient=user, verb='you reached level 10')
+            notify.send(instance, recipient=user, verb='reply')
     except:
         print('dfsf')
 

@@ -1,13 +1,14 @@
 <!doctype html>
 <html lang="{{ LANGUAGE_CODE }}"{% if LANGUAGE_BIDI %} dir="rtl"{% endif %}>
 {% load pages_tags mezzanine_tags i18n staticfiles %}
+{% load notifications_tags %}
 
 <head>
 <meta http-equiv="Content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="keywords" content="{% block meta_keywords %}{% endblock %}">
 <meta name="description" content="{% block meta_description %}{% endblock %}">
-<title>{% block meta_title %}{% endblock %}{% if settings.SITE_TITLE %} | {{ settings.SITE_TITLE }}{% endif %}</title>
+<title>{% block meta_title %}{% endblock %}{% if settings.SITE_TITLE %} | BePy Portal{% endif %}</title>
 <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}">
 
 {% ifinstalled mezzanine.blog %}
@@ -42,12 +43,14 @@
 <script src="{% static 'js/html5shiv.js' %}"></script>
 <script src="{% static 'js/respond.min.js' %}"></script>
 <![endif]-->
+<script src="{% static 'notifications/notify.js' %}" type="text/javascript"></script>
+{% register_notify_callbacks callbacks='fill_notification_list,fill_notification_badge' %}
 
 {% block extra_head %}{% endblock %}
 </head>
 
 <body id="{% block body_id %}body{% endblock %}">
-	<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<div class="navbar navbar-default" role="navigation">
 		<div class="container">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -58,7 +61,6 @@
 				</button>
 				{% block navbar_title %}
 				{% if settings.SITE_TITLE %}<a class="navbar-brand" href="/">BEPY</a>{% endif %}
-				{% if settings.SITE_TAGLINE %}<p class="navbar-text visible-lg"></p>{% endif %}
 				
 
 				{% endblock%}
@@ -68,7 +70,7 @@
 				{% block navbar_dropdown_menu %}{% page_menu "pages/menus/dropdown.html" %}{% endblock%}
 				<ul class="nav navbar-nav navbar-right">
 					<li>				
-						<a href="" data-toggle="tooltip" data-placement="top" title="You have unread comments">
+						<a href="/comment_filter/notifications/" data-toggle="tooltip" data-placement="top" title="You have {% notifications_unread %} unread notifications">
 							<span class="glyphicon glyphicon-bell">
 							</span>
 						</a>
