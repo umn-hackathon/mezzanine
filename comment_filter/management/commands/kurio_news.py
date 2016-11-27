@@ -1,15 +1,13 @@
 import json
 import requests
+from urllib.parse import urlparse
 from datetime import datetime
 
 from django.core.management.base import BaseCommand
 from django.contrib.auth.models import User
-from urllib.parse import urlparse
-import urllib
+from django.conf import settings
 
-
-
-from mezzanine.blog.models import BlogPost
+from mezzanine.blog.models import BlogPost, BlogCategory
 
 
 class Command(BaseCommand):
@@ -26,27 +24,42 @@ class Command(BaseCommand):
                    'Authorization': 'Bearer {}'.format(token),
                    }
 
-
-        response = requests.get('https://hack.kurio.co.id/v1/feed/top_stories', headers=headers)
+        response = requests.get('https://hack.kurio.co.id/v1/feed/top_stories?num=20', headers=headers)
         articles = response.json()['data']
         for article in articles:
             response = requests.get('https://hack.kurio.co.id/v1/article/{}'.format(article['id']), headers=headers)
-            content = (response.json()['content'][1]['text'])
+            try:
+                content = (response.json()['content'][1]['text'])
+            except:
+                continue
+
             title = (response.json()['title'])
             user = User.objects.all()[0]
             blog, created = BlogPost.objects.get_or_create(title=title, user_id=user.id)
-            blog.content = content
-            blog.published_date = datetime.now()
-            blog.status = 2
+            if created:
+                category = (response.json()['topics']['data'][0]['name'])
+                category, created = BlogCategory.objects.get_or_create(title=category)
 
-            img_url = response.json()['content'][0]['url']
-            name = urlparse(img_url).path.split('/')[-1]
-            content = urllib.request.urlopen(img_url).read()
 
-            # problem: content must be an instance of File
-            blog.featured_image.save(name, content, save=True)
+                blog.content = content
+                blog.published_date = datetime.now()
+                blog.status = 2
+                blog.categories.add(category)
 
-            blog.save()
+                img_url = response.json()['content'][0]['url']
+                name = urlparse(img_url).path.split('/')[-1]
+                print (name)
+
+                r = requests.get(img_url)
+
+                with open('{}/static/media/uploads/blog/{}'.format(settings.PROJECT_ROOT, name), 'wb') as f:
+                    f.write(r.content)
+
+                blog.save()
+                blog = BlogPost.objects.get(title=title, user_id=user.id)
+                blog.featured_image = 'uploads/blog/{}'.format(name)
+
+                blog.save()
 
         print ('done')
 
