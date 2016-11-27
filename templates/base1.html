@@ -8,7 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="keywords" content="{% block meta_keywords %}{% endblock %}">
 <meta name="description" content="{% block meta_description %}{% endblock %}">
-<title>{% block meta_title %}{% endblock %}{% if settings.SITE_TITLE %} | {{ settings.SITE_TITLE }}{% endif %}</title>
+<title>{% block meta_title %}{% endblock %}{% if settings.SITE_TITLE %} | BePy Portal{% endif %}</title>
 <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}">
 
 {% ifinstalled mezzanine.blog %}
@@ -60,8 +60,8 @@
 					<span class="icon-bar"></span>
 				</button>
 				{% block navbar_title %}
-				{% if settings.SITE_TITLE %}<a class="navbar-brand" href="/">{{ settings.SITE_TITLE }}</a>{% endif %}
-				{% if settings.SITE_TAGLINE %}<p class="navbar-text visible-lg">{{ settings.SITE_TAGLINE }}</p>{% endif %}
+				{% if settings.SITE_TITLE %}<a class="navbar-brand" href="/">BEPY</a>{% endif %}
+				
 				
 
 				{% endblock%}
