@@ -33,7 +33,7 @@
             <span class="glyphicon glyphicon-share-alt"></span> {% trans "Reply" %}
         </a>
                             |
-                    <a href="" onclick="report_comment({{comment.comment_ptr.id}}, {{request.user.id}});">
+                    <a href="#" onclick="report_comment({{comment.comment_ptr.id}}, {{request.user.id}});">
                         <span class="glyphicon glyphicon-warning-sign"></span> {% trans "Report as an Offensive Comment" %}
                     </a>
 
@@ -81,7 +81,7 @@
 <script>
 $(document).ready(function(){
     report_comment = function(comment_id, user_id) {
-        event.preventDefault()
+        
         $.post( "/comment_filter/report_comment/", { comment_id: comment_id, user_id: user_id, csrfmiddlewaretoken: '{{ csrf_token }}' })
           .done(function( data ) {
             alert(data.response);
