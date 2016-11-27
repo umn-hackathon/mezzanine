@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User
 from django.http import HttpResponse
+from django.shortcuts import render, redirect
 
 from django_comments.models import Comment
 from rest_framework.renderers import JSONRenderer
@@ -66,9 +67,20 @@ def report_comment(request):
         response = 'You have reported this comment before'
 
     reported_count = ReportedComment.objects.filter(comment=comment).count()
-    if reported_count > 10:
+    if reported_count > 2:
         comment.is_removed = True
         comment.save()
 
     
     return JSONResponse({'response': response}, status=200)
+
+def notifications(request, template_name):
+    notifs = request.user.notifications.unread()
+    context = {'notifs': notifs}
+
+    return render(request, template_name, context)
+
+def notifications_mark_all_as_read(request):
+    request.user.notifications.mark_all_as_read()
+
+    return redirect('/comment_filter/notifications/')
