@@ -75,12 +75,17 @@ def report_comment(request):
     return JSONResponse({'response': response}, status=200)
 
 def notifications(request, template_name):
-    notifs = request.user.notifications.unread()
-    context = {'notifs': notifs}
-
-    return render(request, template_name, context)
+    if request.user.is_authenticated:
+        notifs = request.user.notifications.unread()
+        context = {'notifs': notifs}
+        return render(request, template_name, context)
+    else:
+        return redirect('/')
 
 def notifications_mark_all_as_read(request):
-    request.user.notifications.mark_all_as_read()
+    if request.user.is_authenticated:
+        request.user.notifications.mark_all_as_read()
+        return redirect('/comment_filter/notifications/')
+    else:
+        return redirect('/')
 
-    return redirect('/comment_filter/notifications/')
