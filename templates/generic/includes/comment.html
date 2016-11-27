@@ -81,7 +81,7 @@
 <script>
 $(document).ready(function(){
     report_comment = function(comment_id, user_id) {
-        
+
         $.post( "/comment_filter/report_comment/", { comment_id: comment_id, user_id: user_id, csrfmiddlewaretoken: '{{ csrf_token }}' })
           .done(function( data ) {
             alert(data.response);
