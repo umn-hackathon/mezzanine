@@ -21,6 +21,7 @@ urlpatterns = i18n_patterns(
     url(r'^accounts/', include('allauth.urls')),
     url('^notifications/', include('notifications.urls', namespace='notifications')),
     url('^comment_filter/', include('comment_filter.urls', namespace='comment_filter')),
+    url('^', include('tata_kelola.urls', namespace='tata_kelola')),
 
 )
 

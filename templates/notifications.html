@@ -1,11 +1,14 @@
-{% extends "account/base.html" %}
+{% extends "base_tata_kelola.html" %}
+{# extends "account/base.html" #}
 {% load comments %}
 {% load i18n %}
 
 {% block head_title %}{% trans "Account Inactive" %}{% endblock %}
-
+{% block breadcrumb_menu %}
+    <a>Home</a> / <a>Notifikasi</a>
+{% endblock %}
 {% block main %}
-<h1>{% trans "Notifications" %}</h1>
+<h1>{% trans "Notifikasi" %}</h1>
     <p><a href="/comment_filter/notifications_mark_all_as_read/"><span class="glyphicon glyphicon-ok"> </span> Mark all as read</a></p>
     {% for notif in notifs %}
         <div class="alert alert-success" role="alert">

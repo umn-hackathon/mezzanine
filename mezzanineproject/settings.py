@@ -268,6 +268,8 @@ INSTALLED_APPS = (
     'comment_filter',
     'notifications',
     'rest_framework',
+    'tata_kelola',
+    'bootstrap3',
 )
 
 # List of middleware classes to use. Order is important; in the request phase,
@@ -384,7 +386,6 @@ DEFAULT_FROM_EMAIL = "admin@be-py.com"  # if you don't already have this in sett
 ACCOUNT_EMAIL_REQUIRED = 'True'
 
 #ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
-ACCOUNT_EMAIL_VERIFICATION = 'none'
 ACCOUNT_EMAIL_SUBJECT_PREFIX = 'Bepy'
 BLOG_USE_FEATURED_IMAGE = True
 DOMAIN_URL = 'http://127.0.0.1:8000'

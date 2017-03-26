@@ -1,0 +1,58 @@
+{% extends "base_tata_kelola.html" %}
+
+{% block breadcrumb_menu %}
+    <a>Home</a> / <a>Proyek</a>
+{% endblock %}
+{% block main %}
+
+        <div class="row">
+            <h2 class="text-center">Proyek Dashboard</h2>
+
+            <div class="col-md-6">
+                <p><button type="button" class="btn">Buat Proyek Baru</button></p>
+                <p>Total proyek: 2</p>
+                <div class="form-group">
+                    <label class="control-label" for="id_kategori_aplikasi">
+                        Langkah Terakhir
+                    </label>
+                    <select class="form-control" id="id_kategori_aplikasi" name="kategori_aplikasi" title="" required="">
+                        <option value="" selected="selected">---------</option>
+                        <option value="PP">Perencanaan Sistem</option>
+                        <option value="MI">Manajemen Belanja</option>
+                    </select>
+                </div>
+            </div>
+
+        </div>
+        <div class="row">
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Nama Proyek</th>
+                        <th>Langkah Terakhir</th>
+                        <th>Status</th>
+                        <th>Tanggal Terakhir Update</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Aplikasi Monitoring Kebakaran</td>
+                        <td>Perencanaan Proyek</td>
+                        <td>Disetujui</td>
+                        <td>20 Maret 2017</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>Aplikasi Lapor Lapar</td>
+                        <td>Manajemen Belanja</td>
+                        <td>Menunggu Persetujuan</td>
+                        <td>12 Maret 2017</td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+
+{% endblock %}

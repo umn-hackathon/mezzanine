@@ -1,0 +1,45 @@
+{% extends "base_tata_kelola.html" %}
+
+
+{% block extra_css %}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+{% endblock %}
+
+{% block main %}
+<style>
+    .breadcrumb {
+        display:none; !important
+    }
+</style>
+
+
+        <div class="row text-center">
+            <h1 style="margin-bottom:30px">Aplikasi Tata Kelola TIK Pemerintah Kota Depok</h1>
+            <div class="col-md-4">
+                <i class="fa fa-bell-o fa-5" style="font-size: 12em;" aria-hidden="true"></i>
+                <br>Notifikasi
+            </div>
+            <div class="col-md-4">
+                <i class="fa fa-user-circle fa-5" style="font-size: 12em;" aria-hidden="true"></i>
+                <br>User
+            </div>
+            <div class="col-md-4">
+                <i class="fa fa-file-text fa-5" style="font-size: 12em;" aria-hidden="true"></i>
+                <br>Kebijakan
+            </div>
+
+            <div class="col-md-4">
+                <i class="fa fa-tasks fa-5" style="font-size: 12em;" aria-hidden="true"></i>
+                <br>Proyek
+            </div>
+            <div class="col-md-4">
+                <i class="fa fa-check-square fa-5" style="font-size: 12em;" aria-hidden="true"></i>
+                <br>Evaluasi dan Monitoring
+            </div>
+            <div class="col-md-4">
+                <i class="fa fa-question-circle-o fa-5" style="font-size: 12em;" aria-hidden="true"></i>
+                <br>Bantuan
+            </div>
+        </div>
+
+{% endblock %}

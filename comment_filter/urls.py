@@ -1,5 +1,5 @@
 from django.conf.urls import url
-from  comment_filter.views import censored_check, report_comment, notifications, notifications_mark_all_as_read
+from comment_filter.views import censored_check, report_comment, notifications, notifications_mark_all_as_read
 
 
 urlpatterns =[

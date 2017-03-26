@@ -1,0 +1,34 @@
+{% extends "base_tata_kelola.html" %}
+{% load staticfiles %}
+{% load bootstrap3 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/step.css' %}">
+{% endblock %}
+{% block breadcrumb_menu %}
+    <a>Home</a> / <a>Proyek</a>
+{% endblock %}
+{% include "tata_kelola/step_base.html"%}
+
+{% block main %}
+        <h2 class="text-center">Proyek</h2>
+        <h5><b>Milestone</b></h5>
+        {% include "tata_kelola/step_base.html"%}
+
+        <div class="row">
+            <div class="col-md-6">
+                {% bootstrap_form form %}
+
+                <button type="button" class="btn btn-primary">Submit</button>
+                <button type="button" class="btn btn-default">Save as Draft</button>
+
+            </div>
+            <div class="col-md-6">
+            </div>
+
+
+
+        </div>
+
+{% endblock %}
