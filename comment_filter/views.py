@@ -10,8 +10,6 @@ from rest_framework.decorators import api_view
 from comment_filter.models import CensoredWord, ReportedComment
 
 
-
-
 class JSONResponse(HttpResponse):
     """
     An HttpResponse that renders its content into JSON.
@@ -71,7 +69,7 @@ def report_comment(request):
         comment.is_removed = True
         comment.save()
 
-    
+
     return JSONResponse({'response': response}, status=200)
 
 def notifications(request, template_name):
@@ -88,4 +86,3 @@ def notifications_mark_all_as_read(request):
         return redirect('/comment_filter/notifications/')
     else:
         return redirect('/')
-

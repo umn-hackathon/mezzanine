@@ -15,4 +15,4 @@ class ReportedComment(models.Model):
     reporter = models.ForeignKey(User, related_name='reported_comments')
 
     def __str__(self):
-        return self.comment.comment
+        return "{} - reported by {}".format(self.comment.comment, self.reporter)
