@@ -4,6 +4,7 @@ from . import views
 
 urlpatterns =[
     url(r'^step1/$', views.step1, {'template_name': 'tata_kelola/step1.html'}, 'step1'),
+    url(r'^step2/$', views.step2, {'template_name': 'tata_kelola/step2.html'}, 'step2'),
     url(r'^home/$', TemplateView.as_view(template_name="tata_kelola/home.html"), {}, 'home'),
     url(r'^proyek_dashboard/$', TemplateView.as_view(template_name="tata_kelola/proyek_dashboard.html"), {}, 'proyek_dashboard'),
 ]
