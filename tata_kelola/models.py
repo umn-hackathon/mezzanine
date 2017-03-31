@@ -45,3 +45,26 @@ class Step2(models.Model):
     capital_budgeting = models.TextField()
     visi = models.TextField()
     misi = models.TextField()
+
+class Step3 (models.Model):
+    proyek = models.ForeignKey(Proyek)
+    identifikasi_pemeliharaan_alternatif_sistem = models.TextField()
+    realisasi_software_aplikasi = models.TextField()
+    realisasi_inrastruktur_teknologi = models.TextField()
+    realisasi_pengelolaan_data = models.TextField()
+
+class Step4 (models.Model):
+    proyek = models.ForeignKey(Proyek)
+    manajemen_tingkat_layanan = models.TextField()
+    keamanan_keberlangsungan_sistem = models.TextField()
+    manajemen_software_aplikasi = models.TextField()
+    manajemen_infratruktur = models.TextField()
+    manajemen_data = models.TextField()
+    manajemen_pihak_ketiga = models.TextField()
+
+class Step5 (models.Model):
+    proyek = models.ForeignKey(Proyek)
+    pemeliharaan_software_aplikasi = models.TextField()
+    pemeliharaan_infrastruktur_teknologi = models.TextField()
+    pemeliharaan_data = models.TextField()
+    siklus_hidup_likuidasi_sdit = models.TextField()
